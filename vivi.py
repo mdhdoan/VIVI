@@ -20,7 +20,6 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 # memory_file = "memory/VIVI-memory.json"
 # character_file = "characters/VIVI-character.json"
 
-
 ##### LLM PROMPTS #####
 def create_prompt(format_instructions):
     QA_TEMPLATE = """
@@ -42,7 +41,7 @@ def create_prompt(format_instructions):
 ##### FUNCTIONS #####
 def load_memory(filepath="memory/VIVI-memory.json"):
     try:
-        with open(filepath, "r") as f:
+        with open(filepath, "rb+") as f:
             return json.load(f)
     except (FileNotFoundError, json.JSONDecodeError):
         print("Starting with empty memory.")
@@ -50,18 +49,18 @@ def load_memory(filepath="memory/VIVI-memory.json"):
 
 def load_character(filepath="characters/VIVI-character.json"):
     try:
-        with open(filepath, "r") as f:
+        with open(filepath, "rb+") as f:
             return json.load(f)
     except (FileNotFoundError, json.JSONDecodeError):
         print("Starting with default character.")
         return {}
 
-def run_live_character(memory, character_data, model_name="gemma3:27b"):
+def run_live_character(memory, character_data):
     character = VIVICharacter(character_data)
     print(character.intro())
 
     # Load model
-    llm = OllamaLLM(model=model_name, temperature=0.1)
+    llm = OllamaLLM(model=reasoning_model, temperature=0.1)
 
     # Prompt Template
     prompt_template = PromptTemplate.from_template("""
