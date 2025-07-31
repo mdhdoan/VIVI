@@ -16,6 +16,7 @@ import os
 ##### INPUT VARIABLES SETTINGS #####
 # reasoning_model = 'gemma3:27b'
 reasoning_model = 'llama3.1'
+# reasoning_model = 'benevolentjoker/nsfwmonika'
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 # memory_file = "memory/VIVI-memory.json"
 # character_file = "characters/VIVI-character.json"
