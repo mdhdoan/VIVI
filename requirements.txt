@@ -32,3 +32,7 @@ typing-inspection==0.4.1
 typing_extensions==4.13.2
 urllib3==2.4.0
 zstandard==0.23.0
+numpy==1.26.4
+pygame==2.6.1
+sounddevice==0.5.2
+nvidia-riva-client==2.22.0
